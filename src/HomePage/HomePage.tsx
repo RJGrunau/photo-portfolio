@@ -1,6 +1,7 @@
 import { css} from "@emotion/react";
 import { useQuery } from "graphql-hooks";
 import LayoutComponent from "../Layout/layout";
+import HeroComponent from "./components/HeroSection";
 
 
 const style = {
@@ -15,13 +16,14 @@ const HOMEPAGE_QUERY = `query HomePage{
     homePage {
         title
         heroImage {
-          responsiveImage {
+          responsiveImage(imgixParams: { fit: scale, auto: format }) {
             alt
             aspectRatio
             bgColor
             src
             srcSet
             webpSrcSet
+            width
           }
         }
       }
@@ -45,8 +47,7 @@ const HomePage = (): JSX.Element => {
                     </div>
                 )}
                 {data && (
-
-                    <h1>{title}</h1>
+                    <HeroComponent image={heroImage.responsiveImage}/>
                 )}
             </div>
         )

@@ -5,4 +5,5 @@ export interface ResponsiveImage {
     src: string,
     srcSet: string,
     webSrcSet: string,
+    width: number,
 }
