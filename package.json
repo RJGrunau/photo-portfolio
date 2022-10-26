@@ -12,6 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.19.3",
+    "@types/node": "^18.11.5",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "babel-plugin-emotion": "^11.0.0",
@@ -24,6 +25,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
+    "graphql-hooks": "^6.0.3",
     "react-router-dom": "^6.4.2"
   }
 }
