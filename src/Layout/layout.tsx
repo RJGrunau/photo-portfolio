@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import SiteHeader from "./Header";
 
 
 const styles = {
@@ -22,9 +23,7 @@ interface LayoutComponentProps {
 
 const LayoutComponent = ({renderBody}: LayoutComponentProps): JSX.Element => (
     <div css={styles.mainContianer}>
-        <header css={styles.mainHeader}>
-            This is your header
-        </header>
+        <SiteHeader/>
         <main>
             {renderBody()}
         </main>

@@ -7,3 +7,11 @@ export interface ResponsiveImage {
     webSrcSet: string,
     width: number,
 }
+
+export interface Member {
+    id: string,
+    socialLink: Object,
+    landingPhoto: ResponsiveImage,
+    name: string,
+}
+

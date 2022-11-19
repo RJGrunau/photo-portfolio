@@ -1,22 +1,40 @@
 import { css } from "@emotion/react";
+import { useEffect, useState } from "react";
 import { Image } from "react-datocms";
 import { ResponsiveImage } from "../../Common/interfaces";
 
 const styles = {
     heroContainer: css({
         width: '100%',
-        maxWidth: '56.25rem',
-        padding: '3rem',
+        maxWidth: '60rem',
         margin: '0 auto',
+        padding: '1rem'
     })
 }
 interface HeroComponentProps {
-    image: ResponsiveImage
+    images: ResponsiveImage[],
 }
-const HeroComponent = ({image}: HeroComponentProps):JSX.Element => (
-    <div css={styles.heroContainer}>
-        <Image data={image}/>
-    </div>
-)
+const HeroComponent = ({images}: HeroComponentProps):JSX.Element => {
+    const [indexToUse, setIndexToUse] = useState(0);
+
+
+    useEffect(() => {
+        const index = Math.floor(Math.random() * images?.length);
+        setIndexToUse(index);
+    },[indexToUse, setIndexToUse]);
+
+    return (
+        <div css={styles.heroContainer}>
+            {!images.length && (
+                <div>
+                    WTF
+                </div>
+            )}
+            {images && (
+                <Image data={images[indexToUse].responsiveImage} />
+            )}
+        </div>
+    )
+}
 
 export default HeroComponent;
