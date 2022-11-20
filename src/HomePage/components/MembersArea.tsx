@@ -11,6 +11,7 @@ const styles = {
     gallery: css({
         maxWidth: '60rem',
         margin: '0 auto',
+        display: 'flex',
     }),
 }
 const MembersArea = (): JSX.Element => {
@@ -18,8 +19,11 @@ const MembersArea = (): JSX.Element => {
     
     return (
         <section css={styles.membersSection}>
+            <div>
+                <h2>Members</h2>
+            </div>
             <div css={styles.gallery}>
-                {allMembers.map((member) => (
+                {allMembers?.map((member) => (
                     <HomePageMemberCard
                         key={member.id}
                         name={member.name}
