@@ -46,7 +46,7 @@ const HomePage = (): JSX.Element => {
                     </div>
                 )}
                 {data && (
-                    <HeroComponent image={heroImage.responsiveImage}/>
+                    <HeroComponent image={heroImage}/>
                 )}
             </div>
         )

@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { Image } from "react-datocms";
-import { ResponsiveImage } from "../../Common/interfaces";
+import { Frame } from "../../Common/interfaces";
 
 const styles = {
     heroContainer: css({
@@ -11,11 +11,11 @@ const styles = {
     })
 }
 interface HeroComponentProps {
-    image: ResponsiveImage
+    image: Frame
 }
 const HeroComponent = ({image}: HeroComponentProps):JSX.Element => (
     <div css={styles.heroContainer}>
-        <Image data={image}/>
+        <Image data={image.responsiveImage}/>
     </div>
 )
 
