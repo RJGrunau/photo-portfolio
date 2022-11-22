@@ -1,12 +1,10 @@
 import { css } from "@emotion/react";
+import Header  from "./Header";
 
 
 const styles = {
     mainContianer: css({
         width: '100%',
-    }),
-    mainHeader: css({
-        width: '100%'
     }),
     main: css({
         width: '100%',
@@ -22,9 +20,7 @@ interface LayoutComponentProps {
 
 const LayoutComponent = ({renderBody}: LayoutComponentProps): JSX.Element => (
     <div css={styles.mainContianer}>
-        <header css={styles.mainHeader}>
-            This is your header
-        </header>
+       <Header/>
         <main>
             {renderBody()}
         </main>

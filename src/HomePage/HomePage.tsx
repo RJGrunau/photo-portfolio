@@ -32,7 +32,6 @@ const HomePage = (): JSX.Element => {
     const {loading, error, data} = useQuery(HOMEPAGE_QUERY);
     const {homePage} = data ?? {};
     const {title, heroImage} = homePage ?? {}; 
-    console.log();
     const hookProps = {
         renderBody: () => (
             <div css={style.container}>

@@ -1,4 +1,4 @@
-export interface ResponsiveImage {
+type ResponsiveImage = {
     alt: string,
     aspectRatio: number,
     bgColor: string,
@@ -6,4 +6,8 @@ export interface ResponsiveImage {
     srcSet: string,
     webSrcSet: string,
     width: number,
+}
+
+export interface Frame {
+    responsiveImage: ResponsiveImage,
 }
