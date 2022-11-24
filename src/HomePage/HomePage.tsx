@@ -8,7 +8,7 @@ const style = {
     container: css({
         margin: '0 auto',
         width: '100%',
-        maxWidth: '75rem'
+        maxWidth: '90rem'
     })
 }
 

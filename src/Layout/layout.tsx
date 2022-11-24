@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+// import Footer from "./Footer";
 import Header  from "./Header";
 
 
@@ -9,9 +10,6 @@ const styles = {
     main: css({
         width: '100%',
     }),
-    mainFooter: css({
-        width: '100%',
-    })
 }
 
 interface LayoutComponentProps {
@@ -24,9 +22,7 @@ const LayoutComponent = ({renderBody}: LayoutComponentProps): JSX.Element => (
         <main>
             {renderBody()}
         </main>
-        <footer css={styles.mainFooter}>
-            This is your footer
-        </footer>
+        {/* <Footer/> */}
     </div>
 )
 
