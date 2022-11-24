@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import { css} from "@emotion/react";
 import { useQuery } from "graphql-hooks";
 import LayoutComponent from "../Layout/layout";
@@ -7,65 +8,49 @@ import MembersArea from "./components/MembersArea";
 const style = {
     container: css({
         width: '100%',
-    }),
-    textSection: css({
-        width: '100%',
-        padding: '1rem',
-        backgroundColor: '#F5F5F5',
-    }),
-    textBlock: css({
-        margin: '0 auto',
-        maxWidth: '60rem',
-    }),
-    membersSection: css({
-        width: '100%',
-        padding: '1rem',
-    }),
-    gallery: css({
-        maxWidth: '60rem',
-        margin: '0 auto',
-    }),
+        maxWidth: '90rem'
+    })
 }
 
 const HOMEPAGE_QUERY = `query HomePage{
     homePage {
-        homepageGallery {
-          responsiveImage {
-            sizes
-            width
-            height
-            src
-            srcSet
-            webpSrcSet
-          }
-        }
-        introText(markdown: true)
-    }
+        title
+      }
 }`
 const HomePage = (): JSX.Element => {
-    const { loading, error, data} = useQuery(HOMEPAGE_QUERY);
+    const [showData, setShowData] = useState(false);
+    const {loading, error, data} = useQuery(HOMEPAGE_QUERY);
     const {homePage} = data ?? {};
-    const {homepageGallery, introText, member} = homePage ?? {};
-    
+    const {title } = homePage ?? {}; 
+    const openCloseNav = ():void => {
+        console.log('clicked');
+        
+        if(showData){
+            setShowData(false);
+        } else {
+            setShowData(true);
+        }
+
+    } 
     const hookProps = {
+        onClick: openCloseNav,
+        showData,
         renderBody: () => (
             
             <div css={style.container}>
-                { data && (
-                    <> 
-                        <HeroComponent images={homepageGallery}/>
-                        <section css={style.textSection}>
-                            <article css={style.textBlock} dangerouslySetInnerHTML={{__html: introText}}/>
-                        </section>
-                        <MembersArea/>
-                    </>
-                )}
                 { error && (
                     <div>
                         You fucked up
                     </div>
                 )}
-               
+                {error && (
+                    <div>
+                        Shit went wrong
+                    </div>
+                )}
+                {!loading && data && (
+                    <HeroComponent showData={showData} onClick={openCloseNav}/>                    
+                )}
             </div>
         )
     }

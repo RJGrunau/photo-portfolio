@@ -1,4 +1,4 @@
-export interface ResponsiveImage {
+type ResponsiveImage = {
     alt: string,
     aspectRatio: number,
     bgColor: string,
@@ -8,10 +8,6 @@ export interface ResponsiveImage {
     width: number,
 }
 
-export interface Member {
-    id: string,
-    socialLink: Object,
-    landingPhoto: ResponsiveImage,
-    name: string,
+export interface Frame {
+    responsiveImage: ResponsiveImage,
 }
-

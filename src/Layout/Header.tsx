@@ -1,51 +1,53 @@
-import {css} from '@emotion/react';
-import { Link } from 'react-router-dom';
-import MainLogo from '../Common/SVG/MainLogo';
+import { css } from '@emotion/react'
+
 
 const styles = {
-    header: css({
+    mainHeader: css({
         width: '100%',
-        height: '6.25rem',
-        padding: '0.5rem',
+        height: '100px'
     }),
-    container: css({
+    headerContainer: css({
         width: '100%',
-        maxWidth: '95rem',
-        padding: '0.25rem 0.5rem',
+        maxWidth: '80.5rem',
+        display: 'flex',
+        alignContent: 'center',
+        justifyContent: 'center',
         margin: '0 auto',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-    }), 
-    logoHolder: css({
-        width: '100px',
-        height: '100px',
-    }), 
-    navHolder: css({
-        width: '20%',
     }),
-    nav: css({
-        display: 'flex',
-        alignItems: 'center'
+    masthead: css({
+        fontSize: '2rem',
+        fontFamily: 'IBM Plex Mono',
+        border: 0,
+        backgroundColor: 'transparent',
     }),
-    links: css({
-        fontSize: '1.4rem',
+    mastheadLink: css({
+        textDecoration: 'none',
+        color: '#000',
+    }),
+    mobileNav: css({
+        display: 'flex',
+        justifyContent: 'space-evenly',
+    }),
+    navLink: css({
+        fontSize: '1.1875rem',
+        textDecoration: 'none',
+        color: 'black',
     }),
 }
 
-const SiteHeader = ():JSX.Element => (
-    <header css={styles.header}>
-        <div css={styles.container}>
-            <div css={styles.logoHolder}>
-                <MainLogo/>
-            </div>
-            <div css={styles.navHolder}>
-                <nav css={styles.nav}>
-                    <Link css={styles.links} to="/about">About</Link>
-                </nav>
+interface HeaderProps {
+    onClick: () => void,
+}
+const Header = ({onClick}: HeaderProps):JSX.Element => (
+    <header css={styles.mainHeader}>
+        <div css={styles.headerContainer}>
+            <div>
+                <div css={styles.mastheadLink} >
+                    <button type="button" onClick={onClick} css={styles.masthead}>Robert Grunau</button>
+                </div>
             </div>
         </div>
     </header>
 );
 
-export default SiteHeader;
+export default Header;

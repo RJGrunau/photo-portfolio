@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {render} from    "react-dom";
 import { Global, css } from '@emotion/react';
 import {
@@ -110,9 +109,6 @@ const router = createBrowserRouter([
 ]);
 const App = () => (
     <ClientContext.Provider value={client}>
-        <Global
-            styles={style.global}
-        />
         <RouterProvider router={router}/>
     </ClientContext.Provider>
 )

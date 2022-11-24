@@ -1,40 +1,86 @@
-import { css } from "@emotion/react";
 import { useEffect, useState } from "react";
+import { css } from "@emotion/react";
+import { useQuery } from "graphql-hooks";
 import { Image } from "react-datocms";
-import { ResponsiveImage } from "../../Common/interfaces";
+import ContactSection from "./ContactSection";
 
 const styles = {
     heroContainer: css({
         width: '100%',
         maxWidth: '60rem',
         margin: '0 auto',
-        padding: '1rem'
-    })
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        gridTemplateRows: 'repeat(3, 1fr)',
+        '@media (max-width: 600px)': {
+            margin: '25px 0',
+        }
+    }),
+    imageContainer: css({
+        gridColumn: '1/4',
+        gridRow: '1/4',
+    }),
 }
-interface HeroComponentProps {
-    images: ResponsiveImage[],
-}
-const HeroComponent = ({images}: HeroComponentProps):JSX.Element => {
-    const [indexToUse, setIndexToUse] = useState(0);
 
+const HERO_COMPONENT_QUERY = `query HeroComponent{
+    homePage {
+        heroimages {
+          responsiveImage {
+            alt
+            aspectRatio
+            base64
+            bgColor
+            height
+            sizes
+            src
+            srcSet
+            title
+            webpSrcSet
+            width
+          }
+        }
+        homeText
+    }
+}
+
+`
+
+interface HeroComponentProps {
+    showData: boolean,
+    onClick: () => void,
+}
+const HeroComponent = ({showData, onClick}: HeroComponentProps):JSX.Element => {
+    const [indexToUse, setIndexToUse] = useState(0)
+    const {loading, error, data} = useQuery(HERO_COMPONENT_QUERY);
+    const {homePage} = data ?? {};
+    const { heroimages, homeText } = homePage ?? {}
 
     useEffect(() => {
-        const index = Math.floor(Math.random() * images?.length);
-        setIndexToUse(index);
-    },[indexToUse, setIndexToUse]);
-
+        setInterval(() => {
+            const index = Math.floor(Math.random() * heroimages.length );
+            setIndexToUse(index);
+        }, 5000);
+        
+    },[ setIndexToUse, heroimages]);
+    
     return (
+
         <div css={styles.heroContainer}>
-            {!images.length && (
-                <div>
-                    WTF
-                </div>
+            {showData && (
+               <ContactSection
+                    homeText={homeText}
+                    onClick={onClick}
+                    showData={showData}
+               />
             )}
-            {images && (
-                <Image data={images[indexToUse].responsiveImage} />
+            {!loading && heroimages.length && (
+                <div css={styles.imageContainer}>
+                    <Image data={heroimages[indexToUse]?.responsiveImage}/>
+                </div>
             )}
         </div>
     )
 }
+
 
 export default HeroComponent;
