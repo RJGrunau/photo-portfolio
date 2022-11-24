@@ -1,11 +1,13 @@
+import { useEffect, useState } from "react";
 import { css } from "@emotion/react";
+import { useQuery } from "graphql-hooks";
 import { Image } from "react-datocms";
-import { Frame } from "../../Common/interfaces";
+import ContactSection from "./ContactSection";
 
 const styles = {
     heroContainer: css({
         width: '100%',
-        maxWidth: '80rem',
+        maxWidth: '60rem',
         margin: '0 auto',
         display: 'grid',
         gridTemplateColumns: 'repeat(3, 1fr)',
@@ -19,15 +21,66 @@ const styles = {
         gridRow: '1/4',
     }),
 }
-interface HeroComponentProps {
-    image: Frame
+
+const HERO_COMPONENT_QUERY = `query HeroComponent{
+    homePage {
+        heroimages {
+          responsiveImage {
+            alt
+            aspectRatio
+            base64
+            bgColor
+            height
+            sizes
+            src
+            srcSet
+            title
+            webpSrcSet
+            width
+          }
+        }
+        homeText
+    }
 }
-const HeroComponent = ({image}: HeroComponentProps):JSX.Element => (
-    <div css={styles.heroContainer}>
-        <div css={styles.imageContainer}>
-            <Image data={image.responsiveImage}/>
+
+`
+
+interface HeroComponentProps {
+    showData: boolean,
+    onClick: () => void,
+}
+const HeroComponent = ({showData, onClick}: HeroComponentProps):JSX.Element => {
+    const [indexToUse, setIndexToUse] = useState(0)
+    const {loading, error, data} = useQuery(HERO_COMPONENT_QUERY);
+    const {homePage} = data ?? {};
+    const { heroimages, homeText } = homePage ?? {}
+
+    useEffect(() => {
+        setInterval(() => {
+            const index = Math.floor(Math.random() * heroimages.length );
+            setIndexToUse(index);
+        }, 5000);
+        
+    },[ setIndexToUse, heroimages]);
+    
+    return (
+
+        <div css={styles.heroContainer}>
+            {showData && (
+               <ContactSection
+                    homeText={homeText}
+                    onClick={onClick}
+                    showData={showData}
+               />
+            )}
+            {!loading && heroimages.length && (
+                <div css={styles.imageContainer}>
+                    <Image data={heroimages[indexToUse]?.responsiveImage}/>
+                </div>
+            )}
         </div>
-    </div>
-)
+    )
+}
+
 
 export default HeroComponent;

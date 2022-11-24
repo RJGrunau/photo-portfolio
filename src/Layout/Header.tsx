@@ -17,7 +17,9 @@ const styles = {
     }),
     masthead: css({
         fontSize: '2rem',
-        fontFamily: 'Titillium Web',
+        fontFamily: 'IBM Plex Mono',
+        border: 0,
+        backgroundColor: 'transparent',
     }),
     mastheadLink: css({
         textDecoration: 'none',
@@ -34,20 +36,16 @@ const styles = {
     }),
 }
 
-const navRoutes = [
-   
-    {
-        text: 'Newsletter',
-        route: '/newsletter'
-    },
-]
-const Header = ():JSX.Element => (
+interface HeaderProps {
+    onClick: () => void,
+}
+const Header = ({onClick}: HeaderProps):JSX.Element => (
     <header css={styles.mainHeader}>
         <div css={styles.headerContainer}>
             <div>
-                <Link to="/" css={styles.mastheadLink}>
-                    <h1 css={styles.masthead}>Robert Grunau</h1>
-                </Link>
+                <div css={styles.mastheadLink} >
+                    <button type="button" onClick={onClick} css={styles.masthead}>Robert Grunau</button>
+                </div>
             </div>
         </div>
     </header>

@@ -1,5 +1,4 @@
 import { css } from "@emotion/react";
-// import Footer from "./Footer";
 import Header  from "./Header";
 
 
@@ -14,16 +13,18 @@ const styles = {
 
 interface LayoutComponentProps {
     renderBody: () => JSX.Element;
+    onClick: () => void,
 }
 
-const LayoutComponent = ({renderBody}: LayoutComponentProps): JSX.Element => (
-    <div css={styles.mainContianer}>
-       <Header/>
-        <main>
-            {renderBody()}
-        </main>
-        {/* <Footer/> */}
-    </div>
+const LayoutComponent = ({renderBody, onClick}: LayoutComponentProps): JSX.Element => (
+    <>
+        <div css={styles.mainContianer}>
+        <Header onClick={onClick}/>
+            <main>
+                {renderBody()}
+            </main>
+        </div>
+    </>
 )
 
 
