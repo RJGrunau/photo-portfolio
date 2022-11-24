@@ -45,7 +45,7 @@ const HomePage = (): JSX.Element => {
                         Shit went wrong
                     </div>
                 )}
-                {data && (
+                {!loading && data && (
                     <HeroComponent image={heroImage}/>
                 )}
             </div>

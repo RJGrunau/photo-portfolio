@@ -1,6 +1,5 @@
 import { css } from '@emotion/react'
 import { Link } from 'react-router-dom';
-// import HeaderLogo from '../Common/SVG/HeaderLogo';
 
 
 const styles = {
@@ -13,21 +12,35 @@ const styles = {
         maxWidth: '80.5rem',
         display: 'flex',
         alignContent: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         margin: '0 auto',
     }),
     masthead: css({
-        fontSize: '1.75rem',
+        fontSize: '2rem',
         fontFamily: 'Titillium Web',
     }),
     mastheadLink: css({
         textDecoration: 'none',
         color: '#000',
     }),
-    nav: css({})
+    mobileNav: css({
+        display: 'flex',
+        justifyContent: 'space-evenly',
+    }),
+    navLink: css({
+        fontSize: '1.1875rem',
+        textDecoration: 'none',
+        color: 'black',
+    }),
 }
 
-
+const navRoutes = [
+   
+    {
+        text: 'Newsletter',
+        route: '/newsletter'
+    },
+]
 const Header = ():JSX.Element => (
     <header css={styles.mainHeader}>
         <div css={styles.headerContainer}>
@@ -36,11 +49,6 @@ const Header = ():JSX.Element => (
                     <h1 css={styles.masthead}>Robert Grunau</h1>
                 </Link>
             </div>
-                <nav>
-                    <Link to="/about">
-                        about
-                    </Link>
-                </nav>
         </div>
     </header>
 );
