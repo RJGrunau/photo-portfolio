@@ -100,12 +100,17 @@ const client = new GraphQLClient({
 });
 
 import HomePage from "./HomePage/HomePage";
-
+import Newletter from "./Newsletter/Newsletter";
 const router = createBrowserRouter([
     {
         path: "/",
         element: <HomePage/>
+    },
+    {
+        path: "/newsletter",
+        element: <Newletter/>
     }
+
 ]);
 const App = () => (
     <ClientContext.Provider value={client}>

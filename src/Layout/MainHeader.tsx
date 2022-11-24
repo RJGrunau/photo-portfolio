@@ -1,4 +1,5 @@
 import { css } from '@emotion/react'
+import { Link } from 'react-router-dom';
 
 
 const styles = {
@@ -11,7 +12,7 @@ const styles = {
         maxWidth: '80.5rem',
         display: 'flex',
         alignContent: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
         margin: '0 auto',
     }),
     masthead: css({
@@ -35,19 +36,17 @@ const styles = {
     }),
 }
 
-interface HeaderProps {
-    onClick: () => void,
-}
-const Header = ({onClick}: HeaderProps):JSX.Element => (
+
+const MainHeader = () => (
     <header css={styles.mainHeader}>
         <div css={styles.headerContainer}>
             <div>
                 <div css={styles.mastheadLink} >
-                    <button type="button" onClick={onClick} css={styles.masthead}>Robert Grunau</button>
+                    <Link to="/" css={styles.masthead}>Robert Grunau</Link>
                 </div>
             </div>
         </div>
     </header>
 );
 
-export default Header;
+export default MainHeader;

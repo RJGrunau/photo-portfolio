@@ -4,7 +4,8 @@ import { useQuery } from "graphql-hooks";
 import LayoutComponent from "../Layout/layout";
 
 import HeroComponent from "./components/HeroSection";
-import MembersArea from "./components/MembersArea";
+import Header from '../Layout/HomeHeader';
+
 const style = {
     container: css({
         width: '100%',
@@ -33,8 +34,8 @@ const HomePage = (): JSX.Element => {
 
     } 
     const hookProps = {
-        onClick: openCloseNav,
         showData,
+        renderHeader: () => (<Header onClick={openCloseNav}/>),
         renderBody: () => (
             
             <div css={style.container}>
