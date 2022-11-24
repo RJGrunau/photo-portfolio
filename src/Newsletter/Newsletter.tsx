@@ -5,8 +5,14 @@ import MainHeader from '../Layout/MainHeader';
 const style = {
     container: css({
         width: '100%',
-        maxWidth: '90rem'
-    })
+        maxWidth: '90rem',
+        padding: '1.5rem',
+        display: 'flex',
+        justifyContent: 'center'
+    }),
+    signUp: css({
+        margin: '0 auto',
+    }),
 }
 
 const Newletter = () => {
@@ -15,7 +21,9 @@ const Newletter = () => {
         renderHeader: () => (<MainHeader/>),
         renderBody: () => (
             <div css={style.container}>
-                body
+                <section css={style.signUp}> 
+                    <iframe src="https://rjgrunau.substack.com/embed" width="480" height="320" style={{border:"1px solid #EEE", background:"white"}} scrolling="no"></iframe>
+                </section>
             </div>
         )
     }

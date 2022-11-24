@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 
 const styles = {
@@ -12,7 +12,7 @@ const styles = {
         maxWidth: '80.5rem',
         display: 'flex',
         alignContent: 'center',
-        justifyContent: 'space-evenly',
+        justifyContent: 'space-between',
         margin: '0 auto',
     }),
     masthead: css({
@@ -25,26 +25,45 @@ const styles = {
         textDecoration: 'none',
         color: '#000',
     }),
-    mobileNav: css({
+    nav: css({
         display: 'flex',
         justifyContent: 'space-evenly',
+        alignItems: 'center',
+        padding: '0.5rem',
     }),
     navLink: css({
-        fontSize: '1.1875rem',
+        fontSize: '1.25rem',
         textDecoration: 'none',
         color: 'black',
     }),
 }
 
+const navRoutes = [
+    {
+        path: '/newsletter',
+        text: 'Newsletter'
+    }
+];
 
 const MainHeader = () => (
     <header css={styles.mainHeader}>
         <div css={styles.headerContainer}>
             <div>
-                <div css={styles.mastheadLink} >
-                    <Link to="/" css={styles.masthead}>Robert Grunau</Link>
+                <div css={styles.masthead} >
+                    <Link to="/" css={styles.mastheadLink}>Robert Grunau</Link>
                 </div>
             </div>
+            <nav css={styles.nav}>
+                {navRoutes.map(route => (
+                    <NavLink 
+                        to={route.path} 
+                        css={styles.navLink}
+                        style={(isActive) => ({textDecoration: isActive ? 'underline': 'none'})}
+                    >
+                        {route.text}
+                    </NavLink>
+                ))}
+            </nav>
         </div>
     </header>
 );
