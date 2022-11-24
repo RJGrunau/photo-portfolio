@@ -1,4 +1,5 @@
 import {css} from '@emotion/react';
+import { useQuery } from 'graphql-hooks';
 import LayoutComponent from '../Layout/layout';
 import MainHeader from '../Layout/MainHeader';
 
@@ -14,9 +15,14 @@ const style = {
         margin: '0 auto',
     }),
 }
-
+const NEWSLETTER_QUERY = `query Newsletter{
+    page(filter: {title: {eq: "Newsletter"}}) {
+        pageText
+        title
+    }
+}`
 const Newletter = () => {
-    
+    const {data} = useQuery(NEWSLETTER_QUERY);
     const hookProps = {
         renderHeader: () => (<MainHeader/>),
         renderBody: () => (
