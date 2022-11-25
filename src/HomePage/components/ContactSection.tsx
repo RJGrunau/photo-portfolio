@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const styles = {
     contactData: css({
@@ -30,6 +30,7 @@ const styles = {
     }),
     social: css({
         display: 'flex',
+        margin: '0.5rem 0',
     }),
     closeSection: css({
         alignSelf: 'center',
@@ -57,7 +58,15 @@ const ContactSection = ({homeText, onClick}: ContactSectionProps): JSX.Element =
                     Newsletter: 
                 </div>
                 <div>
-                    <Link css={styles.newsLetterLink} to="/newsletter">Public Journal</Link>
+                    <NavLink css={styles.newsLetterLink} to="/newsletter">Public Journal</NavLink>
+                </div>
+            </div>
+            <div css={styles.newsLetter}>
+                <div>
+                    Projects:
+                </div>
+                <div>
+                    <NavLink css={styles.newsLetterLink} to="/projects">Projects</NavLink>
                 </div>
             </div>
             <div css={styles.social}>

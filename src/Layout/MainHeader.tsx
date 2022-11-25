@@ -47,6 +47,7 @@ const styles = {
         padding: '0.5rem',
     }),
     navLink: css({
+        margin: '0 0.75rem',
         fontSize: '1.25rem',
         textDecoration: 'none',
         color: 'black',
@@ -54,6 +55,10 @@ const styles = {
 }
 
 const navRoutes = [
+    {
+        path: '/projects',
+        text: 'Projects'
+    },
     {
         path: '/newsletter',
         text: 'Newsletter'
