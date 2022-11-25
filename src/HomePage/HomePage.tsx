@@ -24,7 +24,6 @@ const HomePage = (): JSX.Element => {
     const {homePage} = data ?? {};
     const {title } = homePage ?? {}; 
     const openCloseNav = ():void => {
-        console.log('clicked');
         
         if(showData){
             setShowData(false);
