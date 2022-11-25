@@ -1,5 +1,4 @@
 import { css } from "@emotion/react";
-import Header  from "./Header";
 
 
 const styles = {
@@ -12,14 +11,15 @@ const styles = {
 }
 
 interface LayoutComponentProps {
-    renderBody: () => JSX.Element;
-    onClick: () => void,
+    renderHeader: () => JSX.Element,
+    renderBody: () => JSX.Element,
+    onClick?: () => void,
 }
 
-const LayoutComponent = ({renderBody, onClick}: LayoutComponentProps): JSX.Element => (
+const LayoutComponent = ({renderBody, renderHeader}: LayoutComponentProps): JSX.Element => (
     <>
         <div css={styles.mainContianer}>
-        <Header onClick={onClick}/>
+            {renderHeader && renderHeader()}
             <main>
                 {renderBody()}
             </main>

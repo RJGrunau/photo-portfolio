@@ -52,14 +52,14 @@ const ContactSection = ({homeText, onClick}: ContactSectionProps): JSX.Element =
             <div>
                 <article dangerouslySetInnerHTML={{__html: homeText}}/>
             </div>
-            {/* <div css={styles.newsLetter}>
+            <div css={styles.newsLetter}>
                 <div>
                     Newsletter: 
                 </div>
                 <div>
                     <Link css={styles.newsLetterLink} to="/newsletter">Public Journal</Link>
                 </div>
-            </div> */}
+            </div>
             <div css={styles.social}>
                 <div>Instagram:</div>
                 <div style={{marginLeft: '0.5rem'}}><a href="https://instagram.com/rjgrunau">rjgrunau</a></div>

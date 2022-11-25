@@ -36,7 +36,7 @@ const styles = {
 }
 
 interface HeaderProps {
-    onClick: () => void,
+    onClick?: () => void,
 }
 const Header = ({onClick}: HeaderProps):JSX.Element => (
     <header css={styles.mainHeader}>
