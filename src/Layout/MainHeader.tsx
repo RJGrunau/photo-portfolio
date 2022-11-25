@@ -5,7 +5,11 @@ import { Link, NavLink } from 'react-router-dom';
 const styles = {
     mainHeader: css({
         width: '100%',
-        height: '100px'
+        height: '100px',
+
+        '@media (max-width: 600px)':{
+            height: '50px',
+        }
     }),
     headerContainer: css({
         width: '100%',
@@ -14,16 +18,27 @@ const styles = {
         alignContent: 'center',
         justifyContent: 'space-between',
         margin: '0 auto',
+        '@media (max-width: 600px)': {
+            flexDirection: 'column',
+        },
     }),
     masthead: css({
         fontSize: '2rem',
         fontFamily: 'IBM Plex Mono',
         border: 0,
         backgroundColor: 'transparent',
+        '@media (max-width: 600px)': {
+            display: 'flex',
+            alignItems: 'center',
+        },
     }),
     mastheadLink: css({
         textDecoration: 'none',
         color: '#000',
+        display: 'inline-block',
+        '@media (max-width: 600px)': {
+            margin: '0 auto',
+        }
     }),
     nav: css({
         display: 'flex',

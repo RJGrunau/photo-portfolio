@@ -21,6 +21,10 @@ const style = {
         maxWidth: '65rem',
         padding: '2rem', 
         
+        'p': {
+            width: '90%',
+            padding: '0.5rem'
+        },
         '@media (max-width: 600px)': {
             padding: '0.25rem',
             'ol': {
