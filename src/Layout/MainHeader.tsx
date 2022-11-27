@@ -57,7 +57,7 @@ const styles = {
 const navRoutes = [
     {
         path: '/projects',
-        text: 'Projects'
+        text: 'Current Project'
     },
     {
         path: '/newsletter',
