@@ -1,7 +1,7 @@
-import {useEffect, useMemo, useState} from 'react';
+import {Key, useEffect, useMemo, useState} from 'react';
 import { css } from '@emotion/react';
 import { useQuery } from 'graphql-hooks';
-import { Image } from 'react-datocms';
+import { Image, ResponsiveImageType } from 'react-datocms';
 
 import LayoutComponent from '../Layout/layout';
 import MainHeader from '../Layout/MainHeader';
@@ -46,16 +46,11 @@ const styles = {
         }
     }),
     gallery: css({
-        maxWidth: '75rem',
-        margin: '0 auto',
-        display: 'flex',
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
-        overflow: 'scroll',
+        columnCount: '3',
+        columnWidth: '33.3%',
     }),
     galleryImage: css({
-        width: '35%',
-        margin: '0 0.625rem'
+        margin: '0.625rem 0.625rem'
     }),
 }
 
@@ -98,8 +93,7 @@ const ProjectsHome = () => {
     const {allPhotoEssays} = data ?? {};
     const [object] = allPhotoEssays ?? [];
     const {title, projectDescription, essayGallery} = object ?? {};
-    const {image} = essayGallery ?? {};
-    console.log(essayGallery);
+    
     
     const onViewProjectClick = ():void => {
         if(!showPhotos){
@@ -128,13 +122,15 @@ const ProjectsHome = () => {
                         </div>
                     )}
                     {showPhotos && essayGallery && (
-                        <div css={styles.gallery}>
-                            {essayGallery?.map((image) => (
-                                <div css={styles.galleryImage}>
-                                    <Image data={image?.image?.responsiveImage}/>
-                                </div>
-                            ))}
-                        </div>
+                        <>
+                            <div css={styles.gallery}>
+                                {essayGallery?.map((image: { image: { id: Key | null | undefined; responsiveImage: ResponsiveImageType; }; }) => (
+                                    <div key={image?.image?.id} css={styles.galleryImage}>
+                                        <Image data={image?.image?.responsiveImage}/>
+                                    </div>
+                                ))}
+                            </div>
+                        </>
                     )}
                 </section>
             </div>
