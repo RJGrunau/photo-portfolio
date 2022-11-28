@@ -101,10 +101,15 @@ const client = new GraphQLClient({
 
 import HomePage from "./HomePage/HomePage";
 import Newletter from "./Newsletter/Newsletter";
+import ProjectsHome from "./Projects/ProjectHome";
 const router = createBrowserRouter([
     {
         path: "/",
         element: <HomePage/>
+    },
+    {
+      path: "/projects",
+      element: <ProjectsHome/>
     },
     {
         path: "/newsletter",
