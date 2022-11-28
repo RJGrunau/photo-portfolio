@@ -87,8 +87,7 @@ const CURRENT_PROJECT = `query CurrentProject{
 }
 `
 const ProjectsHome = () => {
-    const [showPhotos, setShowPhotos] = useState(true);
-    const [gallery, setGallery] = useState([]);
+    const [showPhotos, setShowPhotos] = useState(false);
     const {loading, data} = useQuery(CURRENT_PROJECT);
     const {allPhotoEssays} = data ?? {};
     const [object] = allPhotoEssays ?? [];
