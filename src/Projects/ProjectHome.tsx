@@ -5,7 +5,6 @@ import { Image, ResponsiveImageType } from 'react-datocms';
 
 import LayoutComponent from '../Layout/layout';
 import MainHeader from '../Layout/MainHeader';
-import { Frame } from '../Common/interfaces';
 
 const styles = {
     container: css({
