@@ -1,4 +1,4 @@
-import {Key, useEffect, useMemo, useState} from 'react';
+import {Key, useState} from 'react';
 import { css } from '@emotion/react';
 import { useQuery } from 'graphql-hooks';
 import { Image, ResponsiveImageType } from 'react-datocms';
