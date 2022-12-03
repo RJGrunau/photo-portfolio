@@ -59,10 +59,6 @@ const navRoutes = [
         path: '/projects',
         text: 'Current Project'
     },
-    {
-        path: '/newsletter',
-        text: 'Newsletter'
-    }
 ];
 
 const MainHeader = () => (

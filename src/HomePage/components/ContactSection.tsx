@@ -55,14 +55,6 @@ const ContactSection = ({homeText, onClick}: ContactSectionProps): JSX.Element =
             </div>
             <div css={styles.newsLetter}>
                 <div>
-                    Newsletter: 
-                </div>
-                <div>
-                    <NavLink css={styles.newsLetterLink} to="/newsletter">Contact Sheet</NavLink>
-                </div>
-            </div>
-            <div css={styles.newsLetter}>
-                <div>
                     Projects:
                 </div>
                 <div>
