@@ -11,6 +11,10 @@ const styles = {
         width: '100%',
         maxWidth: '90rem',
         fontFamily: 'IBM Plex Mono',
+
+        '@media (max-width: 40.60rem)': {
+            marginTop: '4.6875rem',
+        }
     }),
     section: css({
         width: '100%',
@@ -47,6 +51,11 @@ const styles = {
     gallery: css({
         columnCount: '3',
         columnWidth: '33.3%',
+
+        '@media (max-width: 40.575rem)': {
+            columnCount: '1',
+            columnWidth: '100%',
+        }
     }),
     galleryImage: css({
         margin: '0.625rem 0.625rem'

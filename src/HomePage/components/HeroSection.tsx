@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import { useQuery } from "graphql-hooks";
 import { Image } from "react-datocms";
-import ContactSection from "./ContactSection";
 
 const styles = {
     heroContainer: css({
@@ -13,7 +12,7 @@ const styles = {
         gridTemplateColumns: 'repeat(3, 1fr)',
         gridTemplateRows: 'repeat(3, 1fr)',
         '@media (max-width: 600px)': {
-            margin: '25px 0',
+            margin: '75px 0',
         }
     }),
     imageContainer: css({
@@ -45,11 +44,7 @@ const HERO_COMPONENT_QUERY = `query HeroComponent{
 
 `
 
-interface HeroComponentProps {
-    showData: boolean,
-    onClick: () => void,
-}
-const HeroComponent = ({showData, onClick}: HeroComponentProps):JSX.Element => {
+const HeroComponent = ():JSX.Element => {
     const [indexToUse, setIndexToUse] = useState(0)
     const {loading, error, data} = useQuery(HERO_COMPONENT_QUERY);
     const {homePage} = data ?? {};
@@ -66,13 +61,6 @@ const HeroComponent = ({showData, onClick}: HeroComponentProps):JSX.Element => {
     return (
 
         <div css={styles.heroContainer}>
-            {showData && (
-               <ContactSection
-                    homeText={homeText}
-                    onClick={onClick}
-                    showData={showData}
-               />
-            )}
             {!loading && heroimages.length && (
                 <div css={styles.imageContainer}>
                     <Image data={heroimages[indexToUse]?.responsiveImage}/>

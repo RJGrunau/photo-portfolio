@@ -9,6 +9,10 @@ const styles = {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+
+        '@media (max-width: 649px)': {
+            display: 'none',
+        }
     }),
     contactBox: css({
         width: '50%',
@@ -47,6 +51,7 @@ interface ContactSectionProps {
     showData: boolean,
     onClick: () => void,
 }
+
 const ContactSection = ({homeText, onClick}: ContactSectionProps): JSX.Element => (
     <div css={styles.contactData}>
         <div css={styles.contactBox}>

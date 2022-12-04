@@ -1,10 +1,10 @@
-import {useState} from 'react';
 import { css} from "@emotion/react";
 import { useQuery } from "graphql-hooks";
 import LayoutComponent from "../Layout/layout";
 
 import HeroComponent from "./components/HeroSection";
 import Header from '../Layout/HomeHeader';
+import MainHeader from '../Layout/MainHeader';
 
 const style = {
     container: css({
@@ -19,22 +19,12 @@ const HOMEPAGE_QUERY = `query HomePage{
       }
 }`
 const HomePage = (): JSX.Element => {
-    const [showData, setShowData] = useState(false);
     const {loading, error, data} = useQuery(HOMEPAGE_QUERY);
     const {homePage} = data ?? {};
     const {title } = homePage ?? {}; 
-    const openCloseNav = ():void => {
-        
-        if(showData){
-            setShowData(false);
-        } else {
-            setShowData(true);
-        }
-
-    } 
+    
     const hookProps = {
-        showData,
-        renderHeader: () => (<Header onClick={openCloseNav}/>),
+        renderHeader: () => (<MainHeader/>),
         renderBody: () => (
             
             <div css={style.container}>
@@ -49,8 +39,9 @@ const HomePage = (): JSX.Element => {
                     </div>
                 )}
                 {!loading && data && (
-                    <HeroComponent showData={showData} onClick={openCloseNav}/>                    
+                    <HeroComponent  /> 
                 )}
+
             </div>
         )
     }

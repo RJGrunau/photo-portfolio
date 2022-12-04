@@ -59,6 +59,10 @@ const navRoutes = [
         path: '/projects',
         text: 'Current Project'
     },
+    {
+        path: '/about',
+        text: 'About'
+    }
 ];
 
 const MainHeader = () => (
@@ -66,7 +70,7 @@ const MainHeader = () => (
         <div css={styles.headerContainer}>
             <div>
                 <div css={styles.masthead} >
-                    <Link to="/" css={styles.mastheadLink}>Robert Grunau</Link>
+                    <NavLink to="/" css={styles.mastheadLink}>Robert Grunau</NavLink>
                 </div>
             </div>
             <nav css={styles.nav}>
